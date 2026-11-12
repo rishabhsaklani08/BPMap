@@ -20,7 +20,9 @@
     "fixtures": "node packages/fixtures/scripts/make-fixtures.mjs",
     "check": "npm run typecheck && npm test && npm run build",
     "e2e": "playwright test",
-    "oracle": "python3 -I tools/oracle/workday_export_oracle.py"
+    "oracle": "python3 -I tools/oracle/workday_export_oracle.py",
+    "guide:capture": "node docs/guide-build/capture.mjs",
+    "guide": "python3 -I docs/guide-build/build_guide.py"
   },
   "devDependencies": {
     "@playwright/test": "^1.64.1",

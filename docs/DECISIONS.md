@@ -496,3 +496,15 @@ Full report: [testing/TEST_REPORT_2026-11-12.md](testing/TEST_REPORT_2026-11-12.
   - A header with no rows is an error. Two Initiation steps raise a warning. Unnamed custom notifications are kept. "No Steps sheet" says how many rows were searched.
 - **Accessibility:** Escape deselects; the completion green is darkened to 700 (white ✓ ≈ 5:1); tab targets are 24 px.
 - **Copy:** the "Customisations only" hint now says the file contains condition wording (as keys of rewrites); it previously said "no Workday data".
+
+## DEC-056 · User guide built from the running app, with arrows placed from real element boxes
+- **Date:** 2026-11-12 · **Serves:** IMP-11 (how-to), onboarding of design partners
+- **Decision:** `docs/BPMap_User_Guide.pdf` is generated, not hand-made.
+  - `docs/guide-build/capture.mjs` drives the production build with Playwright on the **synthetic fixtures only** (no tenant data can reach the guide). It saves 2× screenshots plus the on-screen box of every control the guide points at.
+  - `build_guide.py` draws numbered markers and arrows as SVG over each screenshot, from those boxes, and Chrome prints the PDF (the same pipeline as the PRD).
+  - Marker placement avoids other markers, targets and crossing arrows. A per-pointer side hint keeps markers off panel text.
+  - The build **fails** if a target is mostly outside its screenshot, which happened twice when the diagram had scrolled. Without that check the arrow would silently point at the wrong control.
+- **Why:** hand-annotated screenshots go stale with every UI change. Here, a UI change means one re-run: `npm run guide:capture && npm run guide`.
+- **Trade-offs:**
+  - Screenshots are embedded as PNG; JPEG made the PDF larger (11 MB vs 7 MB) for flat UI images.
+  - Screenshots and the intermediate HTML are git-ignored; only the scripts and the PDF are committed.

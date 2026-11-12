@@ -23,6 +23,7 @@ npm run dev          # http://localhost:5173
 | `npm run build` | Production build with CSP (`apps/web/dist`) |
 | `npm run check` | typecheck + test + build |
 | `npm run e2e` | Playwright e2e on the production build, using your installed Chrome (incl. the network-privacy test) |
+| `npm run guide:capture` then `npm run guide` | Re-capture the guide's screenshots (needs `npm run build` and `vite preview --port 4180`) and rebuild `docs/BPMap_User_Guide.pdf` |
 | `npm run fixtures` | Regenerate the synthetic XLSX fixtures and the in-app sample |
 
 ## Layout
@@ -44,6 +45,7 @@ archive/prototype-v0     the original AI Studio prototype (not built)
 
 ## Docs
 
+- [User guide (PDF)](docs/BPMap_User_Guide.pdf): every feature step by step, with annotated screenshots
 - [PRD](docs/PRD_BPMap_for_Workday.md) ([PDF](docs/PRD_BPMap_for_Workday.pdf)) · [Design System](docs/DESIGN_SYSTEM.md) · [Architecture](docs/ARCHITECTURE.md)
 - [Decisions log](docs/DECISIONS.md): every implementation decision and why
 - [Execution flow](docs/FLOW.md): what calls what, and what is being changed now
